@@ -1,7 +1,5 @@
 package com.escuelaing;
 
 public interface WebService {
-
-    String invoque();
+    String invoque(Request request, Response response);
 }
-
