@@ -14,19 +14,34 @@ public class WebFramework {
 
     Map<String, WebService> webServices = new HashMap<>();
     String staticDir = "";
+    private static boolean running = false;
 
     public void get(String route, WebService ws) {
         webServices.put(route, ws);
     }
 
     public void start() throws IOException {
-        ServerSocket server = new ServerSocket(35000);
-        System.out.println("Listening on port:" + server.getLocalPort());
+        running = true;
 
-        while (true) {
-            Socket client = server.accept();
-            handleRequest(client);
+        String portValue = System.getenv("PORT");
+        int port =
+            portValue == null || portValue.isBlank()
+                ? 8080
+                : Integer.parseInt(portValue);
+
+        try(ServerSocket server = new ServerSocket(port)){
+            System.out.println("Listening on port:" + server.getLocalPort());
+            while(running){
+                try(Socket client = server.accept()){
+                    handleRequest(client);
+                }
+            }
         }
+
+    }
+
+    public void stop(){
+        running = false;
     }
 
     public void staticfiles(String staticfile) {

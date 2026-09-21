@@ -5,7 +5,13 @@ public class Application {
     public static void main(String[] args) throws Exception {
         WebFramework webFramework = new WebFramework();
 
-        webFramework.staticfiles("/webroot");
+        String staticFilePath = System.getenv()
+                .getOrDefault("STATIC_FILES_PATH", "/webroot");
+
+        webFramework.staticfiles(staticFilePath);
+
+        String greetingEnPrefix = System.getenv()
+                .getOrDefault("GREETING_EN_PREFIX", "Hello");
 
         webFramework.get("/hello", (req, resp) -> {
             String name = req.getValue("name");
@@ -21,13 +27,13 @@ public class Application {
 
             switch (language) {
                 case "en":
-                    return "Hello" + name;
+                    return greetingEnPrefix + name;
                 case "es":
-                    return "Hola" + name;
+                    return "Hola " + name;
                 case "fra":
-                    return "Bonjour" + name;
+                    return "Bonjour " + name;
                 default:
-                    return "Hello" + name;
+                    return greetingEnPrefix + name;
             }
         });
 
@@ -60,6 +66,19 @@ public class Application {
         webFramework.get("/unknown", (req, resp) -> {
            resp.setStatus(404);
           return "Not Found";
+        });
+
+        String environment = System.getenv()
+                .getOrDefault("APP_ENV", "development");
+
+        webFramework.get("/shutdown", (req, resp) -> {
+            if(environment.equals("development")){
+                webFramework.stop();
+                return "Server will stop after this response.";
+            }
+            resp.setStatus(405);
+            return "Not Allowed Operation";
+
         });
 
         webFramework.start();
