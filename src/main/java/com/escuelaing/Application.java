@@ -69,7 +69,7 @@ public class Application {
         });
 
         String environment = System.getenv()
-                .getOrDefault("APP_ENV", "development");
+                .getOrDefault("APP_ENV", "production");
 
         webFramework.get("/shutdown", (req, resp) -> {
             if(environment.equals("development")){

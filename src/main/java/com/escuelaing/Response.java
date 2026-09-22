@@ -1,7 +1,7 @@
 package com.escuelaing;
 
 public class Response {
-    int status = 20001;
+    int status = 200;
 
     public void setStatus(int code){
         this.status = code;
