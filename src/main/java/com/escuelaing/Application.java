@@ -27,7 +27,7 @@ public class Application {
 
             switch (language) {
                 case "en":
-                    return greetingEnPrefix + name;
+                    return greetingEnPrefix + " " + name;
                 case "es":
                     return "Hola " + name;
                 case "fra":

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Framework Demo</title>
+    <title>My Web Framework — Demo</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -17,12 +17,10 @@
 
         <section class="card">
             <h2>GET /hello · lambda dinámica</h2>
-
             <div class="row">
                 <label for="name">Name</label>
                 <input id="name" type="text" placeholder="Your name" value="Pedro">
             </div>
-
             <div class="row">
                 <label for="language">Language</label>
                 <select id="language">
@@ -31,7 +29,6 @@
                     <option value="fra">Français</option>
                 </select>
             </div>
-
             <button id="btn-hello">Saludar</button>
             <p id="result-hello" class="result">—</p>
         </section>
@@ -40,6 +37,32 @@
             <h2>GET /pi · lambda dinámica</h2>
             <button id="btn-pi">Dar &pi;</button>
             <p id="result-pi" class="result">—</p>
+        </section>
+
+        <section class="card">
+            <h2>GET /e · lambda dinámica</h2>
+            <button id="btn-e">Dar e</button>
+            <p id="result-e" class="result">—</p>
+        </section>
+
+        <section class="card">
+            <h2>GET /sin · lambda dinámica</h2>
+            <div class="row">
+                <label for="n">n (rad)</label>
+                <input id="n" type="text" placeholder="Valor en radianes" value="3">
+            </div>
+            <button id="btn-sin">Calcular seno</button>
+            <p id="result-sin" class="result">—</p>
+        </section>
+
+        <section class="card">
+            <h2>GET /images · lambda dinámica</h2>
+            <div class="row">
+                <label for="imageid">Image id</label>
+                <input id="imageid" type="text" placeholder="logo" value="logo">
+            </div>
+            <button id="btn-images">Buscar imagen</button>
+            <p id="result-images" class="result">—</p>
         </section>
 
     </main>
