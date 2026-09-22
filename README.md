@@ -170,7 +170,6 @@ Connection: close
 3.141592653589793
 ```
 
-> Note: a bug was found and fixed where `Response.status` started at `20001` instead of `200`. Since no successful lambda ever explicitly called `setStatus(200)`, every successful response was sent with an `HTTP/1.1 500 INTERNAL SERVER ERROR` status line even though the body was correct — invisible with plain `curl`, but visible with `curl -i` as shown above. Now fixed and covered by `ResponseTest`.
 
 ### Unknown route (404)
 
@@ -289,3 +288,6 @@ The same production behavior is confirmed on the live cloud deployment below.
 ## License
 
 Academic project — Semester 8, TDSE — Course material.
+
+## Author
+**Daniel Patiño Mejia**
